@@ -62,7 +62,8 @@ The script is an adaptation of the very useful instruction on [how to convert a 
 1. Load the .obj
 2. Scale the mesh from m to mm
 3. Centralize the mesh
-4. Subdivide the mesh
-5. Colorize the vertices
-6. Triangularize faces
-7. Export the .ply
+4. Rotate
+5. Subdivide the mesh
+6. Colorize the vertices
+7. Triangularize faces
+8. Export the .ply

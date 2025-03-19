@@ -21,6 +21,11 @@ def scale_m2mm(ms):
     ms.compute_matrix_from_scaling_or_normalization(axisx = factor, axisy = factor, axisz = factor)
     return ms
 
+def rotate(ms):
+    # rotate the mesh to put the face on the correct orientation
+    ms.compute_matrix_from_rotation(angle = 90.000000)
+    return ms
+
 def centralize(ms):
     # centralize the mesh
     ms.compute_matrix_from_translation(traslmethod = 2)
@@ -28,7 +33,9 @@ def centralize(ms):
 
 def subdivide(ms):
     # subdivide the mesh
-    ms.meshing_surface_subdivision_midpoint(iterations = 3)
+    # ms.meshing_surface_subdivision_midpoint(iterations = 100)
+    ms.meshing_surface_subdivision_catmull_clark()
+    ms.meshing_surface_subdivision_catmull_clark()
     return ms
 
 def colorize(ms):
@@ -43,7 +50,7 @@ def triangularize(ms):
 def export(ms, outfile):
     ms.save_current_mesh(
         file_name=str(outfile),
-        binary=True,
+        binary=False,
         save_textures=False,
         save_vertex_quality=False,
         save_vertex_color=True,
@@ -129,6 +136,7 @@ if __name__ == "__main__":
     
     ms = load_obj(input_obj, verbosity=args.verbose)
     ms = scale_m2mm(ms)
+    ms = rotate(ms)
     ms = centralize(ms)
     ms = subdivide(ms)
     ms = colorize(ms)

@@ -1,2 +1,2 @@
-pymeshlab<v2022.2.post2
-art=6.4
+pymeshlab==2022.2
+art==6.4
